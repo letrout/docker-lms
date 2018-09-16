@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 LABEL maintainer="Joel Luth (joel.luth@gmail.com)"
 LABEL description="Logitech Media Server"
 
+ENV LANG C.UTF-8
 ENV LMS_VOL /srv/lms
 ENV LMS_UID 2001
 ENV LMS_GID 2001
@@ -37,3 +38,7 @@ RUN userdel squeezeboxserver \
 
 VOLUME ${LMS_VOL}
 EXPOSE 3483 3483/udp 9000 9090
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod 755 /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
