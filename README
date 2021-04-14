@@ -1,5 +1,7 @@
 sudo docker run -d \
 	--name lms \
+	--memory="512m" \
+	--memory-swap="512m" \
 	-p 9000:9000 \
 	-p 9090:9090 \
 	-p 3483:3483 \
